@@ -1,14 +1,19 @@
 <template>
-    <ul class="post-list">
-        <li class="post-list__item" v-for="post in posts">
-            <router-link :to="cutUrl(post.link)" replace>
-                <h2>
-                    {{ post.title.rendered }}
-                </h2>
-            </router-link>
-            <p  v-html="post.content.rendered "></p>
-        </li>
-    </ul>
+    <section>
+        <router-link :to="'/about'">
+            About page
+        </router-link>
+        <ul class="post-list">
+            <li class="post-list__item" v-for="post in posts">
+                <router-link :to="cutUrl(post.link)">
+                    <h2>
+                        {{ post.title.rendered }}
+                    </h2>
+                </router-link>
+                <p v-html="post.content.rendered "></p>
+            </li>
+        </ul>
+    </section>
 </template>
 
 <script>

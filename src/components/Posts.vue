@@ -6,10 +6,8 @@
                     <time class="post-list__date">
                       {{ parseDate(post.date) }}
                     </time>
-                    <h1 class="post-list__heading">
-                        {{ post.title.rendered }}
-                    </h1>
-                    <p v-html="post.excerpt.rendered" class="post-list__excerpt"></p>
+                    <h1 class="post-list__heading" v-html="post.title.rendered"></h1>
+                    <p class="post-list__excerpt" v-html="post.excerpt.rendered"></p>
                 </router-link>
             </li>
         </ul>
@@ -37,7 +35,15 @@
                 return url.replace(`${Backend()}/`, '');
             },
             parseDate(date) {
-                return new Date(Date.parse(date)).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' })
+                return new Date(
+                    Date.parse(date)).toLocaleString(
+                        'en-GB',
+                        {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit'
+                        }
+                    )
             }
         },
         created() {

@@ -55,6 +55,12 @@
         &__content {
             margin: 20px 0;
             line-height: 1.5;
+            img,
+            video {
+                width: 100%;
+                height: auto;
+                margin: 20px 0;
+            }
             a {
                 color: #3498db;
                 font-weight: bold;

@@ -9,7 +9,6 @@ script:
   - yarn build
 
 deploy:
-  local_dir: dist
   provider: firebase
   project: "iglo.tech"
   token:

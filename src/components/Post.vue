@@ -1,3 +1,4 @@
+
 <template>
     <section class="post">
         <time class="post__date">
@@ -6,7 +7,7 @@
         <h1 class="post__heading">
             {{ post.post_title }}
         </h1>
-        <article v-html="post.post_content" class="post__content"></article>
+        <article class="post__content" v-html="post.post_content"></article>
     </section>
 </template>
 
@@ -27,7 +28,15 @@
                     });
             },
             parseDate(date) {
-                return new Date(Date.parse(date)).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' })
+                return new Date(
+                    Date.parse(date)).toLocaleString(
+                        'en-GB',
+                        {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit'
+                        }
+                    )
             }
         },
         created() {
@@ -43,7 +52,11 @@
 
 <style lang="scss">
     .post {
+        width: 90%;
+        max-width: 700px;
+        margin: auto;
         padding: 20px 0;
+
         &__date {
             font-size: 12px;
             text-transform: uppercase;
@@ -54,12 +67,15 @@
         }
         &__content {
             margin: 20px 0;
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 1.6;
             img,
             video {
-                width: 100%;
+                display: block;
+                width: auto;
                 height: auto;
-                margin: 20px 0;
+                max-width: 100%;
+                margin: 20px auto;
             }
             a {
                 color: #3498db;

@@ -8,7 +8,6 @@
 
 <script>
     import Logo from '../assets/logo.svg'
-    import Navigation from '@/components/Navigation'
 
     export default {
         name: 'app-header',
@@ -23,13 +22,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 20px;
         background: #1d1d1d;
         &__logo {
             display: block;
-            width: 75%;
+            width: 100%;
             max-width: 250px;
-            padding: 20px;
+            padding: 40px 20px;
         }
     }
 </style>

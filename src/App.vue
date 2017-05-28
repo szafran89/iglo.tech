@@ -2,7 +2,7 @@
   <div id="app">
     <app-header />
     <main class="main">
-      <router-view class="container" />
+      <router-view />
     </main>
     <app-footer />
   </div>
@@ -44,11 +44,5 @@
 
   .main {
     padding: 20px 0;
-  }
-
-  .container {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
   }
 </style>

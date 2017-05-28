@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="posts">
         <ul class="post-list">
             <li class="post-list__item" v-for="post in posts">
                 <router-link :to="cutUrl(post.link)" class="post-list__link">
@@ -59,6 +59,12 @@
 </script>
 
 <style lang="scss">
+    .posts {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+    }
+
     .post-list {
         display: flex;
         flex-direction: row;

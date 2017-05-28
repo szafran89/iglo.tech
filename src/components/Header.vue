@@ -3,7 +3,6 @@
         <router-link :to="'/'" class="header__logo">
             <logo fill="#fff"/>
         </router-link>
-        <navigation/>
     </header>
 </template>
 
@@ -14,8 +13,7 @@
     export default {
         name: 'app-header',
         components: {
-            Logo,
-            Navigation
+            Logo
         }
     }
 </script>

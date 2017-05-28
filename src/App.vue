@@ -9,7 +9,7 @@
 </template>
 
 <script>
-   require('normalize.css')
+  require('normalize.css')
 
   import AppHeader from '@/components/Header'
   import AppFooter from '@/components/Footer'

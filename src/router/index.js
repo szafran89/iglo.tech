@@ -21,7 +21,7 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach( (to, from, next) => {
   if (to.matched.length === 0) {
     Vue.http.get(`${Backend()}/wp-json/headless/v1/type-by-url${to.path}`)
       .then(response => {
@@ -29,8 +29,10 @@ router.beforeEach((to, from, next) => {
           case 'post':
           case 'page':
             router.addRoutes([{path: to.path, component: Post}])
+            break
           default:
             router.addRoutes([{path: to.path, component: NotFound}])
+            break
         }
       })
       .catch(() => {

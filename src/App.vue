@@ -1,25 +1,54 @@
 <template>
   <div id="app">
-    <router-link :to="'/'">
-      <img src="./assets/logo.png">
-    </router-link>
-    <router-view></router-view>
+    <app-header />
+    <main class="main">
+      <router-view class="container" />
+    </main>
+    <app-footer />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+   require('normalize.css')
+
+  import AppHeader from '@/components/Header'
+  import AppFooter from '@/components/Footer'
+
+  export default {
+    name: 'app',
+    components: {
+      AppHeader,
+      AppFooter
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  * {
+    box-sizing: border-box;
+  }
+
+  #app {
+    font-family: -apple-system,
+                  BlinkMacSystemFont,
+                  "Segoe UI",
+                  Roboto,
+                  Oxygen-Sans,
+                  Ubuntu,
+                  Cantarell,
+                  "Helvetica Neue",
+                  sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .main {
+    padding: 20px 0;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+  }
 </style>

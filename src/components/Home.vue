@@ -1,9 +1,6 @@
 <template>
     <section>
-        <h1>
-            Home
-        </h1>
-        <posts></posts>
+        <posts/>
     </section>
 </template>
 
@@ -11,7 +8,7 @@
     import Posts from '@/components/Posts'
 
     export default {
-        name: '',
+        name: 'Home',
         components: {
             Posts
         }

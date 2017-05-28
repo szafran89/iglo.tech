@@ -1,22 +1,24 @@
 <template>
     <section>
-        <router-link :to="'/about'">
-            About page
-        </router-link>
         <ul class="post-list">
             <li class="post-list__item" v-for="post in posts">
-                <router-link :to="cutUrl(post.link)">
-                    <h2>
+                <router-link :to="cutUrl(post.link)" class="post-list__link">
+                    <time class="post-list__date">
+                      {{ parseDate(post.date) }}
+                    </time>
+                    <h1 class="post-list__heading">
                         {{ post.title.rendered }}
-                    </h2>
+                    </h1>
+                    <p v-html="post.excerpt.rendered" class="post-list__excerpt"></p>
                 </router-link>
-                <p v-html="post.content.rendered "></p>
             </li>
         </ul>
     </section>
 </template>
 
 <script>
+    import Backend from '../../config/backend'
+
     export default {
         name: 'Posts',
         data() {
@@ -26,36 +28,63 @@
         },
         methods: {
             getPosts() {
-                this.$http.get('http://snowdog.dev/wp-json/wp/v2/posts')
+                this.$http.get(`${Backend()}/wp-json/wp/v2/posts`)
                     .then(response => {
                         this.posts = response.body;
                     });
             },
             cutUrl(url) {
-                return url.replace('http://snowdog.dev/', '');
+                return url.replace(`${Backend()}/`, '');
+            },
+            parseDate(date) {
+                return new Date(Date.parse(date)).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' })
             }
         },
         created() {
             this.getPosts()
+        },
+        watch: {
+            '$route' (to, from) {
+                this.getPosts()
+            }
         }
     }
 
 </script>
 
-<style>
+<style lang="scss">
     .post-list {
-        list-style: none;
-        text-align: left;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-    }
-    .post-list__item {
-        width: 20%;
-        padding: 20px;
-    }
-    .post-list__item img {
-        max-width: 100%;
-        height: auto;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        &__item {
+            @media screen and (min-width: 700px) {
+                width: 50%;
+            }
+        }
+        &__link {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: #000;
+        }
+        &__date {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        &__heading {
+            font-weight: bold;
+            margin: 0;
+        }
+        &__excerpt {
+            line-height: 1.5;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     }
 </style>

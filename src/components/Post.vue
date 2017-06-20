@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import Backend from '../../config/backend'
+    import { domain } from '../../config/backend'
 
     export default {
         data() {
@@ -22,7 +22,7 @@
         },
         methods: {
             getPost() {
-                this.$http.get(`${Backend()}/wp-json/headless/v1/post-by-url${this.$route.path}`)
+                this.$http.get(`${domain}/wp-json/headless/v1/post-by-url${this.$route.path}`)
                     .then(response => {
                         this.post = response.body;
                     });

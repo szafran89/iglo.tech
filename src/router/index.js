@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
-import Backend from '../../config/backend'
+import { domain } from '../../config/backend'
 
 import Home from '@/components/Home'
 import Post from '@/components/Post'
@@ -23,7 +23,7 @@ const router = new Router({
 
 router.beforeEach( (to, from, next) => {
   if (to.matched.length === 0) {
-    Vue.http.get(`${Backend()}/wp-json/headless/v1/type-by-url${to.path}`)
+    Vue.http.get(`${domain}/wp-json/headless/v1/type-by-url${to.path}`)
       .then(response => {
         switch(response.body) {
           case 'post':
@@ -49,4 +49,3 @@ router.beforeEach( (to, from, next) => {
 })
 
 export default router
-

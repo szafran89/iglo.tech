@@ -1,3 +1,1 @@
-module.exports = function() {
-    return 'https://iglo.tech'
-}
+export const domain = 'https://iglo.tech';

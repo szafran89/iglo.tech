@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import Backend from '../../config/backend'
+    import { domain } from '../../config/backend'
 
     export default {
         name: 'Posts',
@@ -26,13 +26,13 @@
         },
         methods: {
             getPosts() {
-                this.$http.get(`${Backend()}/wp-json/wp/v2/posts`)
+                this.$http.get(`${domain}/wp-json/wp/v2/posts`)
                     .then(response => {
                         this.posts = response.body;
                     });
             },
             cutUrl(url) {
-                return url.replace(`${Backend()}/`, '');
+                return url.replace(`${domain}/`, '');
             },
             parseDate(date) {
                 return new Date(
